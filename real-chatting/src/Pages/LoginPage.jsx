@@ -28,6 +28,12 @@ const LoginPage = () => {
         <div>
           this login pages 
           <h1>Please login to here </h1>
+          <div>
+            <form action="">
+                <input type="text" />
+            </form>
+
+          </div>
         </div>
     );
 };
