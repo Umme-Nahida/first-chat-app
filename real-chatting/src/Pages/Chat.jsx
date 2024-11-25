@@ -13,7 +13,7 @@ const Chat = () => {
     useEffect(()=>{
         socket = io('http://localhost:3000')
         
-        // to send data in server side
+        // to send user info in server side
         socket.emit("join",{name,room}, (error)=>{
                if(error){
                  alert(error)
