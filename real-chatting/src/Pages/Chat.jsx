@@ -24,8 +24,14 @@ const Chat = () => {
 
 
     return (
-        <div>
-            this is chat app 
+        <div className='chat'>
+             <div className="chat-head">
+                <div className="room">sports  </div>
+             </div>
+             <div className="chat-box">
+                <div className="chat-message">Text message</div>
+                <input type="text" name="message" placeholder='message' />
+             </div>
         </div>
     );
 };
