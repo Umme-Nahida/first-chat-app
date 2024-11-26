@@ -27,6 +27,7 @@ const Chat = () => {
         <div className='chat'>
              <div className="chat-head">
                 <div className="room">sports  </div>
+                <button className='py-2 px-2 bg-emerald-400'>X</button>
              </div>
              <div className="chat-box">
                 <div className="chat-message">Text message</div>
