@@ -27,4 +27,10 @@ const removeUser = (id)=>{
     }
 }
 
-module.exports = {addUser,removeUser}
+
+const getUserById = (id)=>{
+   const user = users.find(user => user.id === id)
+   return user;
+}
+
+module.exports = {addUser,removeUser, getUserById}

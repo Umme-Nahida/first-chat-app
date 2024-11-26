@@ -2,7 +2,7 @@ const express = require('express')
 const http = require('http')
 const socketIo = require('socket.io')
 const cors = require('cors')
-const {addUser,removeUser} = require("./SavedUser")
+const {addUser,removeUser,getUserById} = require("./SavedUser")
 const app = express()
 const port = 3000
 
@@ -24,21 +24,36 @@ app.get('/', (req, res) => {
 })
 
 io.on('connection', function(socket){
-  console.log('user connected successfully',socket.id)
+  // console.log('user connected successfully',socket.id)
    
   socket.on("join", ({name,room}, callBack)=>{
-    console.log("join request", name)
+     console.log("join request", name)
      const {error, user} =  addUser({id:socket.id, name, room});
      if(error){
        callBack(error)
-     }else{
-      callBack()
      }
+
+     socket.join(room)
+     socket.emit('message', {user: 'admin', text: `welcome ${name} to ${room} `})
+     socket.broadcast.to(room).emit('message', {user: 'admin', text: `${name} just joined ${room} `})
+      callBack()
+  })
+
+  socket.on('message', (message)=>{
+    console.log(message)
   })
 
    socket.on('disconnect',(socket)=>{
-   console.log('user disconnect',socket.id)
-   removeUser(socket.id)
+  
+    // get user from existing user
+   const user = removeUser(socket.id)
+   console.log('user disconnect',socket.id);
+
+   if(user){
+     io.to(user.room).emit('message', {user:'admin', text:`${user.name} has been left ${user.room} `})
+   }
+
+
   })
 })
 
