@@ -22,7 +22,7 @@ const Chat = () => {
             }
         })
         
-        //  welcome msg by admin 
+        //  welcome msg by admin here code 
         socket.on("message", (message)=>{
             setMessages((existingMessage)=> [...existingMessage, message])
         })
