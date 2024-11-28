@@ -29,7 +29,9 @@ const removeUser = (id)=>{
 
 
 const getUserById = (id)=>{
-   const user = users.find(user => user.id === id)
+   const user = users.find(user => user.id === Number(id));
+//    console.log(typeof(user.id))
+   console.log('this is find user',users)
    return user;
 }
 

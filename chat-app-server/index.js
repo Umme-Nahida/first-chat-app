@@ -7,17 +7,12 @@ const app = express()
 const port = 3000
 
 
-
-
 const httpServer = http.createServer(app)
 const io = socketIo(httpServer, {
   cors: {
       origin: "http://localhost:5173"
   }
-
-
 });
-
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -39,7 +34,11 @@ io.on('connection', function(socket){
       callBack()
   })
 
+  // get message in client side 
   socket.on('message', (message)=>{
+    const user = getUserById(socket.id)
+    console.log("this msg user", user)
+    // io.to(user.room).emit('message', {user: user.name, text: message})
     console.log(message)
   })
 
