@@ -28,6 +28,7 @@ const Chat = () => {
         })
     }, [])
 
+    // get message from input & send server side
     const sendMessage = (e)=>{
         console.log(e.target.value)
         console.log(e.key)
