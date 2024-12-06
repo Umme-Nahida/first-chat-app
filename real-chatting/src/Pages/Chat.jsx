@@ -1,44 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams, useSearchParams } from 'react-router-dom';
-import queryString from 'query-string'
-import io from 'socket.io-client'
 
-let socket;
 const Chat = () => {
-    const { search } = useLocation()
-    console.log(search)
-    const { name, room } = queryString.parse(search);
-    const [messages,setMessages] = useState([])
-    console.log(name, room)
-
-    useEffect(() => {
-        socket = io('http://localhost:3000')
-
-        // to send user info in server side
-        socket.emit("join", { name, room }, (error) => {
-            if (error) {
-                // alert(error)
-                console.log(error)
-            }
-        })
-        
-        //  welcome msg by admin here code 
-        socket.on("message", (message)=>{
-            setMessages((existingMessage)=> [...existingMessage, message])
-        })
-    }, [])
-
-    // get message from input & send server side
-    const sendMessage = (e)=>{
-        console.log(e.target.value)
-        console.log(e.key)
-        if(e.key === 'Enter' && e.target.value){
-            console.log('enter key and value is get ' , e.key, e.target.value)
-            socket.emit("message", e.target.value)
-            e.target.value = '';
-        }
-    }
-
 
     return (
         <div className="flex items-center justify-center min-h-screen">
@@ -48,11 +10,7 @@ const Chat = () => {
                     <button className='py-2 px-2 bg-emerald-400'>X</button>
                 </div>
                 <div className="chat-box w-full ">
-                    {messages.map((message,index)=>(
-                    <div key={index} className="text-left p-2">{message.user}: {message.text} </div>
-                       
-                    ))}
-                    <input  type="text" name="message" onKeyDown={sendMessage} className='px-3 py-2 w-full focus:outline-dotted border border-black ' placeholder='message' />
+                    <input  type="text" name="message"  className='px-3 py-2 w-full focus:outline-dotted border border-black ' placeholder='message' />
                 </div>
             </div>
         </div>
