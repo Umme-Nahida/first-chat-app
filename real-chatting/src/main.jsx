@@ -22,10 +22,6 @@ const router = createBrowserRouter([
     path: "/LoginPage",
     element: <LoginPage></LoginPage>
   },
-  {
-    path: "/MessageListPage",
-    element: <MessageList></MessageList>
-  },
 ]);
 
 createRoot(document.getElementById('root')).render(
