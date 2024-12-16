@@ -18,6 +18,10 @@ const router = createBrowserRouter([
     path: "/chat",
     element: <Chat></Chat>
   },
+  {
+    path: "/LoginPage",
+    element: <LoginPage></LoginPage>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
