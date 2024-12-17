@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/LoginPage",
     element: <LoginPage></LoginPage>
-  },
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
