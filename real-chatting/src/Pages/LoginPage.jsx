@@ -33,6 +33,7 @@ const LoginPage = () => {
                 <input type="text" />
                 <input type="email" name="" id="" />
                 <input type="password" name="" id="" />
+                <input type="text" name="" id="" />
                 <input type="password" name="" id="" />
                 <input type="password" name="" id="" />
             </form>
