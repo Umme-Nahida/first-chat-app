@@ -27,7 +27,7 @@ const LoginPage = () => {
     return (
         <div>
           this login pages 
-          <h1>Please login to here </h1>
+          <h1> </h1>
           <div>
             <form action="">
                 <input type="text" />
