@@ -6,7 +6,7 @@ function App() {
   return(
     <div>
       <Join></Join>
-      <VideoChat></VideoChat>
+      
     </div>
   )
 }
